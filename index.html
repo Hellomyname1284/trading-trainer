@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1220">
+  <title>Trading Trainer – Simulation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">TT</span><div><strong>Trading Trainer</strong><small>Lernen durch Entscheidungen</small></div></div>
+    <div class="simulation-badge">Simulation · kein echtes Geld</div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div><p class="eyebrow">TRAININGSMODUS</p><h1>Lies den Markt.<br><em>Triff eine begründete Entscheidung.</em></h1><p class="intro">Übe Chartanalyse mit lokal erzeugten Kursdaten. Du siehst niemals die Zukunft, bevor du entscheidest.</p></div>
+      <button class="secondary-button" id="newScenarioBtn" type="button">↻ Neue Situation</button>
+    </section>
+
+    <section class="stats-grid" aria-label="Fortschritt">
+      <article class="stat"><span>Virtuelles Kapital</span><strong id="capital">10.000,00 €</strong><small>Startkapital · nur Simulation</small></article>
+      <article class="stat"><span>Gesamtpunkte</span><strong id="score">0</strong><small id="levelText">Lernlevel 1 · Chart-Neuling</small></article>
+      <article class="stat"><span>Entscheidungen</span><strong id="decisions">0</strong><small>gespeichert auf diesem Gerät</small></article>
+    </section>
+
+    <div class="layout">
+      <section class="panel chart-panel">
+        <div class="panel-head"><div><p class="eyebrow">MARKTBEOBACHTUNG</p><h2 id="scenarioTitle">Situation wird geladen …</h2></div><span class="live-dot">● LIVE-SIMULATION</span></div>
+        <div class="chart-meta"><span id="priceLabel">—</span><span id="changeLabel">—</span><span class="chart-note">Zukunft verborgen</span></div>
+        <div class="chart-wrap"><canvas id="chart" role="img" aria-label="Simulierter Candlestick-Chart"></canvas></div>
+        <div class="legend"><span><i class="up"></i> steigende Kerze</span><span><i class="down"></i> fallende Kerze</span><span>● aktueller Entscheidungspunkt</span></div>
+        <div class="signal-row" id="signalRow"></div>
+      </section>
+
+      <aside class="panel coach-panel">
+        <div class="panel-head"><div><p class="eyebrow">TRADING-COACH</p><h2>Erst denken, dann handeln</h2></div><span class="coach-icon">✦</span></div>
+        <p class="coach-copy">Beschreibe kurz deine Analyse. Eine gute Entscheidung wird nicht nur am Ergebnis gemessen.</p>
+        <label for="reason">Meine Beobachtung</label>
+        <textarea id="reason" rows="4" maxlength="280" placeholder="z. B. Der Kurs bildet höhere Tiefs, aber nähert sich einem Widerstand …"></textarea>
+        <div class="risk-line"><label for="risk">Mein Risikobewusstsein</label><select id="risk"><option value="low">Ich würde klein starten / abwarten</option><option value="medium">Ich kenne das Risiko, bin aber unsicher</option><option value="high">Ich würde stark ins Risiko gehen</option></select></div>
+        <div class="decision-actions"><button class="decision buy" data-action="buy" type="button"><b>🟢 Kaufen</b><small>Ich erwarte eher steigende Kurse</small></button><button class="decision sell" data-action="sell" type="button"><b>🔴 Verkaufen</b><small>Ich erwarte eher fallende Kurse</small></button><button class="decision wait" data-action="wait" type="button"><b>🟡 Abwarten</b><small>Ich brauche noch Bestätigung</small></button></div>
+        <p class="hint">Keine Anlageberatung. Dies ist eine Lern-Simulation.</p>
+      </aside>
+    </div>
+
+    <section class="result panel hidden" id="resultPanel"><div class="result-head"><div><p class="eyebrow">AUSWERTUNG</p><h2 id="resultTitle">Deine Entscheidung</h2></div><strong id="pointsEarned" class="points">+0 Punkte</strong></div><div class="result-grid"><div><span class="result-label">Marktbewegung</span><strong id="marketResult">—</strong></div><div><span class="result-label">Simulationsergebnis</span><strong id="tradeResult">—</strong></div><div><span class="result-label">Analysequalität</span><strong id="qualityResult">—</strong></div></div><div class="coach-feedback" id="coachFeedback"></div><button class="primary-button" id="nextBtn" type="button">Nächste Situation →</button></section>
+
+    <section class="learning"><div class="section-title"><p class="eyebrow">WISSENSBASIS</p><h2>Die wichtigsten Bausteine</h2></div><div class="lessons" id="lessons"></div></section>
+    <section class="history panel"><div class="panel-head"><div><p class="eyebrow">DEIN LERNWEG</p><h2>Vergangene Entscheidungen</h2></div><button class="text-button" id="clearHistory" type="button">Fortschritt zurücksetzen</button></div><div id="historyList" class="history-list"><p class="empty">Noch keine Entscheidungen. Deine Lernreise beginnt hier.</p></div></section>
+  </main>
+  <footer>Trading Trainer · Eine sichere Simulation zum Lernen · Keine Echtgeld-Transaktionen</footer>
+  <script src="app.js"></script>
+</body>
+</html>
